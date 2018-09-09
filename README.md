@@ -45,3 +45,18 @@ Do the "reset" combination on keyboard and Pro Micro is automatically flashed:
 
     Detected controller on USB port at /dev/ttyACM0
     ...
+
+# XD60 PCB as GH60
+
+https://github.com/dorkblue/Flashing-XD-60
+
+make xd60:feedee
+
+dfu-programmer atmega32u4 erase --force --debug 1000
+dfu-programmer atmega32u4 flash keymap.hex --debug 1000
+dfu-programmer atmega32u4 reset --debug 1000
+
+dfu-programmer atmega32u4 erase
+dfu-programmer atmega32u4 flash xd60_feedee.hex 
+dfu-programmer atmega32u4 reset
+
