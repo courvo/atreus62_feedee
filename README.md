@@ -60,3 +60,9 @@ dfu-programmer atmega32u4 erase
 dfu-programmer atmega32u4 flash xd60_feedee.hex 
 dfu-programmer atmega32u4 reset
 
+
+# melds
+
+meld $HOME/code/repo/atreus62_feedee/qmk_firmware/keyboards/xd60 $HOME/code/repo/qmk_firmware/keyboards/xd60
+meld $HOME/code/repo/atreus62_feedee/qmk_firmware/keyboards/atreus62 $HOME/code/repo/qmk_firmware/keyboards/atreus62
+
