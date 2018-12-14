@@ -1,6 +1,6 @@
 
 #FD_MODEL=OUTEMU_Brown
-#FD_MODEL=GATERON_Blue
+FD_MODEL=GATERON_Blue # Kailh white
 
 ifeq ($(FD_MODEL),OUTEMU_Brown)
     OPT_DEFS += -DFD_MODEL_OUTEMU_BROWN

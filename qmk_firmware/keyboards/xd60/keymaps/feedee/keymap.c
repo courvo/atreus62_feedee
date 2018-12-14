@@ -4,7 +4,7 @@
 #define _BASE  0
 #define _FN1   1
 #define _FN2   2  // Caplock layer
-#define _RGB   3  // RGB layer]
+#define _RGB   3  // RGB layer
 #define _RESET 4
 
 // Macro ID
@@ -40,11 +40,6 @@
 #define _EUROSI UC(0x20AC)  // €
 #define _POUND  UC(0x00A3)  // £
 
-//Tap Dance Declarations
-/*enum {
-  TD_PRN = 0  // ()
-};*/
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Base Layer
@@ -69,17 +64,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 /* FN 1
- * ,-----------------------------------------------------------------------------------.
- * | `  | F1 | F2 | F3 | F4 | F5 | F6 |  F7  | F8  | F9  | F10  | F11 | F12 |   Ins    |
- * |-----------------------------------------------------------------------------------|
- * | Caps | !  | @  | #  | &  | *  |    | Home |  ↑  | End | PgUp |     |     |        |
- * |-----------------------------------------------------------------------------------|
- * |        | $  | -  | -  | _  | =  |    |  ←   |  ↓  |  →  | PgDn |     |            |
- * |-----------------------------------------------------------------------------------|
- * |           | %  | ~  |    | ^  |    |    |  [   |  ]  |     |      |     RGB       |
- * |-----------------------------------------------------------------------------------|
- * |      |     |     |             Delete             |       |       |       | RESET |
- * `-----------------------------------------------------------------------------------'
+ * ,---------------------------------------------------------------------------------.
+ * | `  | F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8  | F9  | F10  | F11 | F12 |   Ins    |
+ * |---------------------------------------------------------------------------------|
+ * | Caps | !  | @  | #  | &  | *  |    |Home|  ↑  | End | PgUp |     |     |        |
+ * |---------------------------------------------------------------------------------|
+ * |        | $  | -  | -  | _  | =  |    | ←  |  ↓  |  →  | PgDn |     |            |
+ * |---------------------------------------------------------------------------------|
+ * |           | %  | ~  |    | ^  |    |    | [  |  ]  |     |      |     RGB       |
+ * |---------------------------------------------------------------------------------|
+ * |      |     |     |            Delete            |       |       |       | RESET |
+ * `---------------------------------------------------------------------------------'
  */
 [_FN1] = LAYOUT_60_ansi(
  KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_INS, \
@@ -139,80 +134,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  RESET,     XXXXXXX, XXXXXXX,                            XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
 
 };
-
-/*enum {
-  NO_TAP = 0,
-  SINGLE_TAP = 1,
-  SINGLE_HOLD = 2,
-  DOUBLE_TAP = 3,
-  DOUBLE_HOLD = 4,
-  DOUBLE_SINGLE_TAP = 5, //send two single taps
-  TRIPLE_TAP = 6,
-  TRIPLE_HOLD = 7
-};
-
-int cur_dance(qk_tap_dance_state_t *state) {
-  if (state->count == 1) {
-    if (state->interrupted) {
-      //if (!state->pressed) return SINGLE_TAP;
-      //else return SINGLE_HOLD;
-      return SINGLE_HOLD;
-    }
-    else {
-      if (!state->pressed) return SINGLE_TAP;
-      else return SINGLE_HOLD;
-    }
-  }
-  return NO_TAP;
-}
-
-typedef struct {
-  bool is_press_action;
-  int state;
-} xtap;
-
-static xtap tab_state = {
-  .is_press_action = true,
-  .state = 0
-};
-
-void prn_finished(qk_tap_dance_state_t *state, void *user_data) {
-  tab_state.state = cur_dance(state);
-  switch (tab_state.state) {
-    case SINGLE_TAP: register_code(KC_LSFT); register_code(KC_9); unregister_code(KC_9); unregister_code(KC_LSFT); break;  // (
-    case SINGLE_HOLD: register_code(KC_LSFT); register_code(KC_0); unregister_code(KC_0); unregister_code(KC_LSFT); break;  // )
-  }
-}
-
-void prn_reset(qk_tap_dance_state_t *state, void *user_data) {
-  switch (tab_state.state) {
-    case SINGLE_TAP: unregister_code(KC_9); unregister_code(KC_LSFT); break;
-    case DOUBLE_HOLD: unregister_code(KC_0); unregister_code(KC_LSFT); break;
-  }
-  tab_state.state = 0;
-}*/
-
-/*void prn_finished1(qk_tap_dance_state_t *state, void *user_data) {
-  if (state->count == 1) {
-    SEND_STRING("(");
-    reset_tap_dance (state);
-  }
-  else { // 2
-    SEND_STRING(")");
-    reset_tap_dance (state);
-  }
-}*/
-
-// Tap dance
-/*qk_tap_dance_action_t tap_dance_actions[] = {
-  //[TD_PRN] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
-  [TD_PRN] = ACTION_TAP_DANCE_FN(prn_finished1),
-};*/
-
-// Loop
-/*void matrix_scan_user(void) {
-  // Empty
-};*/
 
 void matrix_init_user()
 {
